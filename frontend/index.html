@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Irish Tax Calculator - Local Test</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      max-width: 480px;
+      margin: 40px auto;
+      padding: 20px;
+      background: #f4f4f4;
+    }
+    input, select, button {
+      width: 100%;
+      padding: 10px;
+      margin: 10px 0;
+    }
+    #result {
+      white-space: pre-wrap;
+      background: #fff;
+      padding: 20px;
+      border-radius: 6px;
+      border: 1px solid #ccc;
+      margin-top: 20px;
+    }
+  </style>
+</head>
+<body>
+
+<h2>Irish Tax Calculator</h2>
+
+<label>Employed Income (€)</label>
+<input type="number" id="emp" value="50000">
+
+<label>Self-Employed Income (€)</label>
+<input type="number" id="self" value="0">
+
+<label>Status</label>
+<select id="status">
+  <option value="single">Single</option>
+  <option value="single_parent">Single Parent</option>
+  <option value="married_one_income">Married (One Income)</option>
+</select>
+
+<label>Children Under 18</label>
+<input type="number" id="kids" value="0">
+
+<button onclick="calculate()">Calculate</button>
+
+<div id="result"></div>
+
+<script>
+async function calculate() {
+  const emp = document.getElementById("emp").value;
+  const self = document.getElementById("self").value;
+  const status = document.getElementById("status").value;
+  const kids = document.getElementById("kids").value;
+
+  const url =
+    `http://127.0.0.1:8000/api/calc?` +
+    `employed_income=${emp}&self_employed_income=${self}` +
+    `&status=${status}&children_under18=${kids}`;
+
+  const res = await fetch(url);
+  const data = await res.json();
+
+  document.getElementById("result").textContent =
+    JSON.stringify(data, null, 2);
+}
+</script>
+
+</body>
+</html>
