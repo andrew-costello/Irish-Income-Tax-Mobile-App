@@ -12,9 +12,9 @@ This repository is designed to be clear, maintainable, and easily adaptable for 
 
 ---
 
-## ✨ Features
+## Features
 
-### ✔ Accurate 2025 tax calculations
+### Accurate 2025 tax calculations
 - Income Tax (20% / 40% bands)
 - USC (all bands)
 - PRSI (Class A & Class S)
@@ -27,6 +27,6 @@ This repository is designed to be clear, maintainable, and easily adaptable for 
 
 ---
 
-### ✔ Python-first architecture
+### Python-first architecture
 The **Python version is the source of truth**, containing the official tax engine logic:
 
